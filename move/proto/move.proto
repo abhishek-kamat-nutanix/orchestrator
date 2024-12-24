@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package move;
+
+option go_package = "github.com/abhishek-kamat-nutanix/orchestrator/move/proto";
+
+message AppRequest {
+    string serverAddr = 1;
+    string namespace = 2;
+    string resources = 3; 
+    string labels = 4;
+    string kubeconfig = 5 ;
+    string readerAddr = 6 ;
+}
+
+message AppResponse {
+    string message = 1;
+}
+
+service MoveService {
+    rpc MigrateApp (AppRequest) returns (AppResponse);
+}
